@@ -14,13 +14,10 @@ fn main() -> Result<(), Error> {
 
     let mut client = Client::connect("postgresql://<user>:<password>@<host>:<port>/<database>", NoTls)?;    
 
-    for row in client.query(
-        "SELECT ttr_des, ttr_est, ttr_cod, ttr_lib, ttr_pes, cat_id, ttr_codweb 
-         FROM registral.tipotramites  
-         WHERE ttr_codweb > 0  
-         ORDER BY ttr_des",
-        &[],
-    )? {
+    for row in client.query("SELECT ttr_des, ttr_est, ttr_cod, ttr_lib, ttr_pes, cat_id, ttr_codweb 
+                            FROM registral.tipotramites  
+                            WHERE ttr_codweb > 0  
+                            ORDER BY ttr_des",&[],)? {
         
         let (description, status, code, book_code, weight, category, code_web): 
         (Option<String>, Option<String>, Option<i32>, Option<i16>, Option<i16>, Option<i16>, Option<i16>) = 
