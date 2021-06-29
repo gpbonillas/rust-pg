@@ -21,7 +21,7 @@ fn main() -> Result<(), Error> {
          ORDER BY ttr_des",
         &[],
     )? {
-        // let (nationality, count): (Option<String>, Option<i64>) = (row.get(0), row.get(1));
+        
         let (description, status, code, book_code, weight, category, code_web): 
         (Option<String>, Option<String>, Option<i32>, Option<i16>, Option<i16>, Option<i16>, Option<i16>) = 
         (row.get(0), row.get(1), row.get(2), row.get(3), row.get(4), row.get(5), row.get(6));
